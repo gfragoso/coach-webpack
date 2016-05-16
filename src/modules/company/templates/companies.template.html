@@ -1,0 +1,17 @@
+<div class="panel panel-default" ng-init="vm.init()">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Empresas</div>
+    <!-- Table -->
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>Nome</th>
+            <th>Endereço</th>
+        </tr>
+        <tr ng-repeat="company in vm.companies track by $index">
+            <td>{{$index + 1}}</td>
+            <td>{{company.name}}</td>
+            <td>{{company.address}}</td>
+        </tr>
+    </table>
+</div>

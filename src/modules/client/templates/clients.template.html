@@ -1,0 +1,21 @@
+<div class="panel panel-default" ng-init="vm.init()">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Clientes</div>
+    <!-- Table -->
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>Empresa</th>
+            <th>Contato</th>
+            <th>E-mail</th>
+            <th>telefone</th>
+        </tr>
+        <tr ng-repeat="client in vm.clients track by $index">
+            <td>{{$index + 1}}</td>
+            <td>{{client.company}}</td>
+            <td>{{client.contactName}}</td>
+            <td>{{client.email}}</td>
+            <td>{{client.phone}}</td>
+        </tr>
+    </table>
+</div>

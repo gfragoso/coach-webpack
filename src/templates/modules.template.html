@@ -1,0 +1,31 @@
+<div class="panel panel-default" ng-init="vm.init()">
+    <!-- Default panel contents -->
+    <div class="panel-heading">States [{{vm.states.length}}]</div>
+
+    <!-- Table -->
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>display name</th>
+            <th>state name</th>
+            <th>url</th>
+        </tr>
+        <tr ng-repeat="state in vm.states track by $index">
+            <td>{{$index + 1}}</td>
+            <td>{{state.displayName}}</td>
+            <td>{{state.name}}</td>
+
+            <td ng-show="vm.filterModule">
+                <a ui-sref="modules({moduleName: state.name})">
+                  {{state.url}}
+                </a>
+            </td>
+
+            <td ng-hide="vm.filterModule">
+                <a ui-sref="{{state.name}}">
+                  {{state.url}}
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>

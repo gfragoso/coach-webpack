@@ -1,0 +1,19 @@
+<div class="panel panel-default" ng-init="vm.init()">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Usuários</div>
+    <!-- Table -->
+    <table class="table">
+        <tr>
+            <th>#</th>
+            <th>nome</th>
+            <th>E-mail</th>
+            <th>telefone</th>
+        </tr>
+        <tr ng-repeat="user in vm.users track by $index">
+            <td>{{$index + 1}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>            
+            <td>{{user.phone}}</td>
+        </tr>
+    </table>
+</div>
