@@ -1,3 +1,5 @@
+'use strict';
+
 var app = angular.module('user', []);
 
 var controllerContext = require.context('./controllers', false, /controller.js/);

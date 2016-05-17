@@ -5,9 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "SET NODE_ENV=development && webpack-dev-server --progress --hot -d --devtool eval ",
-    "build": "rimraf ../build && SET NODE_ENV=development && webpack --process --colors --devtool sourcemap",
-    "profile": "webpack -p -j > stats.json"
+    "dev": "SET NODE_ENV=development && webpack-dev-server --progress --hot --devtool eval",
+    "build": "rimraf ../build && SET NODE_ENV=development && webpack --progress -p --colors",
+    "profile": "webpack --profile -j > stats.json"
   },
   "keywords": [
     "coach",

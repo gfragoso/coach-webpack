@@ -91,9 +91,10 @@ var config = {
             output: {
                 comments: false,
             }
-        }),
+        })
     ]
 };
 
 module.exports = config;
+
 //https://webpack.github.io/analyse/
