@@ -1,13 +1,17 @@
-var webpack = require('webpack'),
-    path = require('path'),
-    HtmlWebpackPlugin = require('html-webpack-plugin');
+var path = require('path'),
+    webpack = require('webpack'),
+    HtmlWebpackPlugin = require('html-webpack-plugin'),
+    OpenBrowserPlugin = require('open-browser-webpack-plugin'),
+    ExtractTextPlugin = require("extract-text-webpack-plugin");
 
-const HOST = path.join(__dirname, '/src'),
-    BUILD = path.join(__dirname, '/build'),
-    NODE_MODULES = path.join(__dirname, '/node_modules');
+const paths = {
+    context: path.join(__dirname, '/src'),
+    build: path.join(__dirname, '/build'),
+    nodeModules: path.join(__dirname, '/node_modules')
+};
 
 var config = {
-    context: HOST,
+    context: paths.context,
     entry: {
         app: [
             './scripts/core/bootstrap.js'
@@ -20,11 +24,11 @@ var config = {
             'lodash',
             'font-awesome/scss/font-awesome.scss',
             './styles/main.scss',
-            'bootstrap-webpack!./styles/config/bootstrap.config.js',
+            'bootstrap-webpack!./styles/config/bootstrap.config.js'
         ]
     },
     output: {
-        path: BUILD,
+        path: paths.build,
         filename: 'app.bundle.[hash].js',
         chunkFilename: "[name].bundle.[hash].js",
         sourceMapFilename: '[file].map'
@@ -38,13 +42,16 @@ var config = {
             loader: 'ng-annotate'
         }, {
             test: /\.css$/,
-            loader: "style!css"
+            // loader: "style!css"
+            loader: ExtractTextPlugin.extract("style-loader", "css-loader")
         }, {
             test: /\.less$/,
-            loader: 'style!css!less'
+            // loader: 'style!css!less'
+            loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
         }, {
             test: /\.scss$/,
-            loader: 'style!css!sass'
+            // loader: 'style!css!sass'
+            loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
         }, {
             test: /\.json$/,
             loader: 'json'
@@ -66,6 +73,7 @@ var config = {
         }],
     },
     plugins: [
+        new OpenBrowserPlugin(),
         new HtmlWebpackPlugin({
             inject: true,
             showErrors: true,
@@ -74,7 +82,7 @@ var config = {
             favicon: './imgs/favicon.png'
         }),
         new webpack.DefinePlugin({
-            ROOT: JSON.stringify(process.cwd())
+            PROCESS_CWD: JSON.stringify(process.cwd())
         }),
         new webpack.EnvironmentPlugin([
             "NODE_ENV"
@@ -91,8 +99,20 @@ var config = {
             output: {
                 comments: false,
             }
-        })
-    ]
+        }),
+        new webpack.HotModuleReplacementPlugin(),
+        new ExtractTextPlugin("./styles/[name].[hash].css")
+    ],
+    resolve: {
+        alias: {
+            loader$: paths.context + "/scripts/core/loader.js"
+        }
+    },
+    devtool: "#eval",
+    devServer: {
+        hot: true,
+        inline: true
+    }
 };
 
 module.exports = config;

@@ -4,10 +4,9 @@
   "description": "coach webpack",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "SET NODE_ENV=development && webpack-dev-server --progress --hot --devtool eval",
-    "build": "rimraf ../build && SET NODE_ENV=development && webpack --progress -p --colors",
-    "profile": "webpack --profile -j > stats.json"
+    "profile": "webpack --profile -j > stats.json",
+    "build": "SET NODE_ENV=development && webpack --progress -p",
+    "dev": "SET NODE_ENV=development && webpack-dev-server --progress"
   },
   "keywords": [
     "coach",
@@ -26,6 +25,7 @@
     "bootstrap-webpack": "0.0.5",
     "css-loader": "^0.23.1",
     "expose-loader": "^0.7.1",
+    "extract-text-webpack-plugin": "^1.0.1",
     "file-loader": "^0.8.5",
     "font-awesome": "^4.6.1",
     "html-loader": "^0.4.3",
@@ -37,6 +37,7 @@
     "ng-annotate-loader": "^0.1.0",
     "node-sass": "^3.4.2",
     "oclazyload": "^1.0.9",
+    "open-browser-webpack-plugin": "0.0.2",
     "rimraf": "^2.5.2",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",

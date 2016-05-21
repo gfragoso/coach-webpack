@@ -6,7 +6,7 @@ function CompanyRouting($urlRouterProvider, $stateProvider) {
         .state('company', {
             url: '/company',
             abstract: true,
-            template: require(ROOT + '/src/templates/layout.template.html'),
+            template: require(PROCESS_CWD + '/src/templates/layout.template.html'),
             resolve: {
                 loadModule: function($q, $ocLazyLoad) {
                     return $q(function(resolve) {

@@ -6,7 +6,7 @@ function ClientRouting($urlRouterProvider, $stateProvider) {
         .state('client', {
             url: '/client',
             abstract: true,
-            template: require(ROOT + '/src/templates/layout.template.html'),
+            template: require(PROCESS_CWD + '/src/templates/layout.template.html'),
             resolve: {
                 loadModule: function($q, $ocLazyLoad) {
                     return $q(function(resolve) {

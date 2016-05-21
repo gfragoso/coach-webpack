@@ -1,7 +1,7 @@
 'use strict';
 
-var loader = require('./core/loader');
-var modules = loader.loadModules();
+var Loader = require('loader');
+var modules = Loader.loadModules();
 
 var app = angular.module('app', [
     'ui.router',
@@ -9,6 +9,6 @@ var app = angular.module('app', [
     'ui.bootstrap'
 ].concat(modules));
 
-loader.loadComponents(app);
+Loader.loadComponents(app);
 
 module.exports = app;

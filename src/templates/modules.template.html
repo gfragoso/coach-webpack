@@ -12,7 +12,7 @@
         </tr>
         <tr ng-repeat="state in vm.states track by $index">
             <td>{{$index + 1}}</td>
-            <td>{{state.displayName}}</td>
+            <td>{{state.displayName | upper}}</td>
             <td>{{state.name}}</td>
 
             <td ng-show="vm.filterModule">
