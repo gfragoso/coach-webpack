@@ -1,5 +1,7 @@
 'use strict';
 
+require('../styles/client.scss');
+
 var app = angular.module('client', []);
 
 var controllerContext = require.context('./controllers', false, /controller.js/);

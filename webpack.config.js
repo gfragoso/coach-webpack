@@ -42,16 +42,13 @@ var config = {
             loader: 'ng-annotate'
         }, {
             test: /\.css$/,
-            // loader: "style!css"
-            loader: ExtractTextPlugin.extract("style-loader", "css-loader")
+            loader: "style!css?sourceMap"
         }, {
             test: /\.less$/,
-            // loader: 'style!css!less'
-            loader: ExtractTextPlugin.extract("style-loader", "css-loader!less-loader")
+            loader: 'style!css?sourceMap!less'
         }, {
             test: /\.scss$/,
-            // loader: 'style!css!sass'
-            loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
+            loader: 'style!css?sourceMap!sass'
         }, {
             test: /\.json$/,
             loader: 'json'
@@ -66,10 +63,10 @@ var config = {
             loader: 'file?name=./fonts/[hash].[ext]'
         }, {
             test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-            loader: 'url?limit=10000&mimetype=image/svg+xml&name=./images/[hash].[ext]'
+            loader: 'url?limit=10000&mimetype=image/svg+xml&name=./imgs/[hash].[ext]'
         }, {
             test: /\.(jpe?g|png|gif)$/i,
-            loader: 'file?hash=sha512&digest=hex&name=./images/[hash].[ext]'
+            loader: 'file?hash=sha512&digest=hex&name=./imgs/[hash].[ext]'
         }],
     },
     plugins: [
@@ -100,8 +97,7 @@ var config = {
                 comments: false,
             }
         }),
-        new webpack.HotModuleReplacementPlugin(),
-        new ExtractTextPlugin("./styles/[name].[hash].css")
+        new webpack.HotModuleReplacementPlugin()
     ],
     resolve: {
         alias: {
